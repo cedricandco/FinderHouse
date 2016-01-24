@@ -1,0 +1,45 @@
+{
+  "ProjectName": "HouseFinder",
+  "ProjectGuid": "2f282797-69e9-4037-a551-8a68c8a30916",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.HouseFinder",
+  "DisplayName": "HouseFinder",
+  "Author": "",
+  "Description": "HouseFinder",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{3f9a7a20-b9e0-4a95-b5e2-a850045bcd2f}",
+  "WP8ProductID": "{4f08f4fd-d4c8-44bd-b449-01390f9c1f05}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.HouseFinder",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
