@@ -28,6 +28,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
     })
+    
+    .state('app.flows', {
+        url: '/flows',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/flows/all.html',
+                controller: 'PostsCtrl'
+            }
+        }
+    })
 
     .state('app.lists', {
         url: '/lists',
@@ -81,5 +91,5 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     ;
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/components');
+    $urlRouterProvider.otherwise('/app/flows');
 });

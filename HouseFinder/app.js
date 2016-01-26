@@ -1,63 +1,66 @@
-'use strict';
+angular.module('ionicApp', ['ionic'])
 
-(function() {
-    var app = {
-        data: {}
-    };
+.config(function($stateProvider, $urlRouterProvider) {
 
-    var bootstrap = function() {
-        $(function() {
-            app.mobileApp = new kendo.mobile.Application(document.body, {
-                transition: 'slide',
-                skin: 'flat',
-                initial: 'components/home/view.html'
-            });
-        });
-    };
-
-    if (window.cordova) {
-        document.addEventListener('deviceready', function() {
-            if (navigator && navigator.splashscreen) {
-                navigator.splashscreen.hide();
-            }
-
-            var element = document.getElementById('appDrawer');
-            if (typeof(element) != 'undefined' && element !== null) {
-                if (window.navigator.msPointerEnabled) {
-                    $('#navigation-container').on('MSPointerDown', 'a', function(event) {
-                        app.keepActiveState($(this));
-                    });
-                } else {
-                    $('#navigation-container').on('touchstart', 'a', function(event) {
-                        app.keepActiveState($(this));
-                    });
-                }
-            }
-
-            bootstrap();
-        }, false);
-    } else {
-        bootstrap();
-    }
-
-    app.keepActiveState = function _keepActiveState(item) {
-        var currentItem = item;
-        $('#navigation-container li a.active').removeClass('active');
-        currentItem.addClass('active');
-    };
-
-    window.app = app;
-
-    app.isOnline = function() {
-        if (!navigator || !navigator.connection) {
-            return true;
-        } else {
-            return navigator.connection.type !== 'none';
+        
+  $stateProvider
+    .state('app', {
+      url: "/app",
+      abstract: true,
+      templateUrl: "app.html"
+    })
+    .state('app.home', {
+      url: "/home",
+      views: {
+        'appContent' :{
+          templateUrl: "home.html",
+          controller : "HomeController"
         }
-    };
-}());
+      }
+    })
+  
+  $urlRouterProvider.otherwise("/app/home");
+})
 
-// START_CUSTOM_CODE_kendoUiMobileApp
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
+.controller('AppController', function($scope, $ionicSideMenuDelegate) {
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+    $scope.toggleRight = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+})
 
-// END_CUSTOM_CODE_kendoUiMobileApp
+.controller("HomeController", function($scope) {
+  
+})
+
+.controller("CartController", function($scope, $http) {
+  
+  $scope.data = {
+    items : []
+  };
+  
+	var params = { text: '', type: 1, StartIndex: 0, Count: 1000 };
+    $http.get(
+        "http://24.105.66.139:8061/" + 'api/Modules/GetModules',
+        { params: params }
+    ).then(function (data) {
+        console.log(data)
+    });
+  
+})
+
+.directive("ionCart", function() {
+  return {
+    restrict : "E",
+    templateUrl : "ionCart.html"
+  }
+})
+
+.directive("ionPurchase", function() {
+  return {
+    restrict : "E",
+    template : "<h2>This is Ion Purchase</h2>"
+  }
+})

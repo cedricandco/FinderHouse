@@ -1,0 +1,42 @@
+<ion-view view-title="Ionic Components+">
+	
+    <ion-content>
+    	<div class="list card stable-bg" ng-repeat="post in posts">
+                <div class="item item-avatar">
+                    <img ng-src="{{ post.createdBy.picture.url }}_s.png">
+                    <h2>{{post.createdBy.displayName}}</h2>
+                </div>
+                <div class="item item-body">
+                    <div class="row" ng-repeat="prop in post.properties" ng-if="prop.propertyType == 12">
+                        <div class="col col-100">
+                        	<div ng-repeat="val in prop.values" >
+                            <img ng-src="{{ val.displayValue }}" class="img-full">
+                        </div>    
+                        </div>
+                        
+                    </div>
+                    <div class="row" ng-repeat="prop in post.properties" ng-if="prop.propertyType != 12">
+      					<div class="col col-20">{{prop.name}}</div>
+      					<div class="col col-80">
+                            <span class="font-bold" ng-repeat="val in prop.values">
+                                <span ng-if="prop.propertyType == 1"><pre>{{val.displayValue}}</pre></span>
+                                <a href="{{val.displayValue}}" target="_blank" ng-if="prop.propertyType == 11">{{val.displayValue}}</a>
+                                <span ng-if="prop.propertyType != 1 && prop.propertyType != 11">{{val.displayValue}}; </span>
+                            </span>
+                        </div>
+    				</div>      
+                </div>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                        <i class="icon ion-thumbsup"></i> Like
+                    </a>
+                    <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                        <i class="icon ion-chatbox"></i> Comment
+                    </a>
+                    <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                        <i class="icon ion-share"></i> Share
+                    </a>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
